@@ -41,8 +41,7 @@ class CreateQuizTable extends Migration
             $table->integer('campaign_id')->nullable();
             $table->boolean('deleted');
             $table->integer('created_by');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 

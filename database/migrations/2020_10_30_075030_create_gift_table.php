@@ -23,6 +23,8 @@ class CreateGiftTable extends Migration
             $table->integer('price');
             $table->integer('amount');
             $table->integer('created_by');
+			$table->date('expired_date');
+			$table->timestamps();
         });
     }
 

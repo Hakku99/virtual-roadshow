@@ -16,8 +16,11 @@ class CreateGiftRedemptionTable extends Migration
         Schema::create('gift_redemption', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('gift_id');
-            $table->boolean('status');
+            $table->boolean('approved');
             $table->boolean('delivered');
+			$table->boolean('cancelled');
+			$table->boolean('delivering');
+			$table->text('f_reason');
             $table->integer('created_by');
             $table->timestamps();
         });

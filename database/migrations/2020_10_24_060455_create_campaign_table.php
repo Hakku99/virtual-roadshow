@@ -21,13 +21,19 @@ class CreateCampaignTable extends Migration
             $table->text('section1');
             $table->text('section2')->nullable();
             $table->text('section3')->nullable();
+			$table->text('image_name');
             $table->boolean('quiz');
             $table->integer('quiz_id')->nullable();
+			$table->boolean('status');
+			$table->boolean('banner');
+			$table->boolean('quiz_status');
+			$table->text('video_link');
+			$table->text('contact_number');
+			$table->text('contact_email');
             $table->boolean('deleted');
             $table->integer('created_by');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->text('image_name');
+            $table->timestamps();
+            
         });
     }
 
