@@ -25,7 +25,7 @@ class participantController extends Controller
         $campaigns = DB::table('campaign')->where([['deleted', 0], ['status', 1], ['end_date', '>=', $today],
             ['start_date', '<=', $today]])
             ->take(10)->get()->sortBy('name');
-        $banners = Campaign::where([['deleted', 0], ['status', 1], ['banner', 1], ['end_date', '>=', $today],
+        $banners = Campaign::where([['deleted', 0], ['status', 1], ['end_date', '>=', $today],
             ['start_date', '<=', $today]])->get();
         /*$ending_campaign = Campaign::where([['deleted', 0], ['status', 1], ['end_date', '>=', $today],
             [ $today->diffInDays(Carbon::parse('end_date')) , '<=', 7 ]])->get();*/
