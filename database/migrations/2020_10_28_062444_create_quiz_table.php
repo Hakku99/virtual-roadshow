@@ -40,6 +40,7 @@ class CreateQuizTable extends Migration
             $table->text('answer_for_question10')->nullable();
             $table->integer('campaign_id')->nullable();
             $table->boolean('deleted');
+            $table->boolean('status');
             $table->integer('created_by');
             $table->timestamps();
         });
