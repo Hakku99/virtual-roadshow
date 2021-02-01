@@ -25,7 +25,7 @@ class CreateCampaignTable extends Migration
             $table->boolean('quiz');
             $table->integer('quiz_id')->nullable();
 			$table->boolean('status');
-			$table->boolean('banner');
+			$table->boolean('banner')->nullable();
 			$table->boolean('quiz_status');
 			$table->text('video_link');
 			$table->text('contact_number');
