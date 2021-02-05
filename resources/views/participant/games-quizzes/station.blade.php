@@ -605,18 +605,33 @@
     });
 
     @if(Session::get('errorMsg'))
-    Swal.fire({
-        title: 'You cannot play games when your Medals is 0!',
-        /*text: "You cannot play games when your Medals is 0!",*/
-        /*icon: 'question',*/
-        background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
-        backdrop: 'rgba(224,196,206,0.5)',
-        showCancelButton: true,
-        showConfirmButton: false,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Close'
-    });
+        Swal.fire({
+            title: 'You cannot play games when your Medals is 0!',
+            /*text: "You cannot play games when your Medals is 0!",*/
+            /*icon: 'question',*/
+            background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+            backdrop: 'rgba(224,196,206,0.5)',
+            showCancelButton: true,
+            showConfirmButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Close'
+        });
+        @endif
+
+        @if(Session::get('QuizErrorMsg'))
+        Swal.fire({
+            title: 'You cannot attempt same quiz for more than 1 time in a single day!',
+            /*text: "You cannot play games when your Medals is 0!",*/
+            /*icon: 'question',*/
+            background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+            backdrop: 'rgba(224,196,206,0.5)',
+            showCancelButton: true,
+            showConfirmButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Close'
+        });
         @endif
 
 

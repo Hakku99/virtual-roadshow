@@ -379,12 +379,16 @@ class LoggedInParticipantController extends Controller
     {
         //
         $today = Carbon::today()->toDateString();
-        $quiz = Quiz::find($id);
-        $random = \App\Models\Quiz::where([['id', '!=' ,$id]])->inRandomOrder()->first();
+        if (Quiz_Attemption::where([['quiz_id', '=', $id], ['participant_id', '=', Auth::user()->id],
+                ['attempt_date', '=', $today]])->count() > 0) {
+            return redirect()->route('l_participant.gamesQuizzes')->with('QuizErrorMsg','You cannot play games when your Medals is 0.');
+        } else {
+            $quiz = Quiz::find($id);
+            $random = \App\Models\Quiz::where([['id', '!=' ,$id]])->inRandomOrder()->first();
 
-        $campaign = Campaign::find($quiz->campaign_id);
-        $pattern =
-            '%^# Match any youtube URL
+            $campaign = Campaign::find($quiz->campaign_id);
+            $pattern =
+                '%^# Match any youtube URL
     (?:https?://)?  # Optional scheme. Either http or https
     (?:www\.)?      # Optional www subdomain
     (?:             # Group host alternatives
@@ -399,12 +403,13 @@ class LoggedInParticipantController extends Controller
     ([\w-]{10,12})  # Allow 10-12 for 11 char youtube id.
     ($|&).*         # if additional parameters are also in query string after video id.
     $%x';
-        $result = preg_match($pattern, $campaign->video_link, $matches);
-        if (false !== $result) {
-            $video_id = $matches[1];
+            $result = preg_match($pattern, $campaign->video_link, $matches);
+            if (false !== $result) {
+                $video_id = $matches[1];
+            }
+            return view('participant.games-quizzes.quiz.single_quiz')->with(['campaign' => $campaign, 'isFirst' => true,
+                'quiz'=> $quiz, 'video_id' => $video_id, 'random' => $random]);
         }
-        return view('participant.games-quizzes.quiz.single_quiz')->with(['campaign' => $campaign, 'isFirst' => true,
-            'quiz'=> $quiz, 'video_id' => $video_id, 'random' => $random]);
     }
 
     /**

@@ -12,6 +12,7 @@
 */
 
 
+use App\Models\Quiz_Attemption;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -40,12 +41,7 @@ Route::get('/', function () {
 });
 
 Route::get('/check', function () {
-    //$records = \App\Models\Game1_Attemption::all()->sortByDesc('scores')->groupBy('participant_name')->take(10);
-    $records = \App\Models\Game1_Attemption::orderBy('scores', 'desc')->first();
-    /*foreach ($records as $record) {
-        echo $record[0] ."<br><br>";
-    }*/
-    echo $records;
+    
 
 });
 
