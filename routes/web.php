@@ -64,6 +64,7 @@ Route::post('/admin/deleteCampaign', 'adminController@deleteCampaign')->name('ad
 Route::post('/admin/inactivateCampaign', 'adminController@inactivateCampaign')->name('admin.inactivateCampaign');
 Route::post('/admin/activateCampaign', 'adminController@activateCampaign')->name('admin.activateCampaign');
 Route::post('/admin/renderCampaignsTable', 'adminController@renderCampaignsTable')->name('admin.render.campaignTable');
+Route::post('/admin/renderEndedCampaignsTable', 'adminController@renderEndedCampaignsTable')->name('admin.render.endedCampaignTable');
 
 /*Route for quiz*/
 Route::get('/admin/addQuiz/{id}', 'adminController@createQuiz')->name('admin.createQuiz');

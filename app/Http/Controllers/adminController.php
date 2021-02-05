@@ -7,6 +7,7 @@ use App\Models\Gift;
 use App\Models\Gift_Redemption;
 use App\Models\Quiz;
 use App\Participant;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -46,7 +47,8 @@ class adminController extends Controller
      */
     public function renderCampaignsTable()
     {
-        $deleted = DB::table('campaign')->where('deleted', 0)->get()->sortBy('name');
+        $today = Carbon::today()->toDateString();
+        $deleted = DB::table('campaign')->where([['deleted', 0], ['end_date', '>=', $today]])->get()->sortBy('name');
         foreach ($deleted as $record) {
             $pattern =
                 '%^# Match any youtube URL
@@ -71,6 +73,43 @@ class adminController extends Controller
         }
 
         $html = view('admin.campaign.render.campaignTable')->with('campaigns', $deleted)->render();
+        return response()->json(['success' => true, 'html' => $html]);
+    }
+
+    /**
+     * render ended campaign Datatable.
+     *
+     * @return Renderable
+     * @throws Throwable
+     */
+    public function renderEndedCampaignsTable()
+    {
+        $today = Carbon::today()->toDateString();
+        $deleted = DB::table('campaign')->where([['deleted', 0], ['end_date', '<', $today]])->get()->sortBy('name');
+        foreach ($deleted as $record) {
+            $pattern =
+                '%^# Match any youtube URL
+    (?:https?://)?  # Optional scheme. Either http or https
+    (?:www\.)?      # Optional www subdomain
+    (?:             # Group host alternatives
+      youtu\.be/    # Either youtu.be,
+    | youtube\.com  # or youtube.com
+      (?:           # Group path alternatives
+        /embed/     # Either /embed/
+      | /v/         # or /v/
+      | .*v=        # or /watch\?v=
+      )             # End path alternatives.
+    )               # End host alternatives.
+    ([\w-]{10,12})  # Allow 10-12 for 11 char youtube id.
+    ($|&).*         # if additional parameters are also in query string after video id.
+    $%x';
+            $result = preg_match($pattern, $record->video_link, $matches);
+            if (false !== $result) {
+                $record->video_id = $matches[1];
+            }
+        }
+
+        $html = view('admin.campaign.render.endedCampaignTable')->with('campaigns', $deleted)->render();
         return response()->json(['success' => true, 'html' => $html]);
     }
 

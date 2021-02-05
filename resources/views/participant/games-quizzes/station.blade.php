@@ -423,10 +423,12 @@
                                                          style="width: 110px; height: 110px;" alt="img">
                                                     <span> Flappy Bird </span>
                                                 </div>
-                                                <small style="margin: 15px auto 0 auto; color: darkred;">You have already run out of medals,
-                                                 please answer quiz to restore your medals or wait until 12.00 A.M.!</small>
+                                                <small style="margin: 15px auto 0 auto; color: darkred;">You have
+                                                    already run out of medals,
+                                                    please answer quiz to restore your medals or wait until 12.00
+                                                    A.M.!</small>
                                             </div>
-                                            @else
+                                        @else
                                             <div class="row">
                                                 <a href="{{url('l_participant/games/2048')}}" class="btn-link"
                                                    style="float: left">
@@ -593,6 +595,7 @@
         </div>
     </div>
 </footer>
+
 </body>
 </html>
 
@@ -600,6 +603,22 @@
     $(function () {
         $('#games').addClass('active');
     });
+
+    @if(Session::get('errorMsg'))
+    Swal.fire({
+        title: 'You cannot play games when your Medals is 0!',
+        /*text: "You cannot play games when your Medals is 0!",*/
+        /*icon: 'question',*/
+        background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+        backdrop: 'rgba(224,196,206,0.5)',
+        showCancelButton: true,
+        showConfirmButton: false,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Close'
+    });
+        @endif
+
 
     var guide = $('#guide');
     var close = $('#close');

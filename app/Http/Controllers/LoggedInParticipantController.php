@@ -445,14 +445,18 @@ class LoggedInParticipantController extends Controller
     {
         //
         //$top_10 = Game1_Attemption::orderBy('scores', 'desc')->limit(10)->get();
-        $all = Game1_Attemption::all();
-        $top = Game1_Attemption::orderBy('scores', 'desc')->first();
-        $top_10 = Game1_Attemption::all()->sortByDesc('scores')->groupBy('participant_name')->take(10);
-        if ($all->isEmpty()) {
-            return view('participant.games-quizzes.games.2048')/*->with(['top_10'=> $top_10])*/;
-        }
-        else {
-            return view('participant.games-quizzes.games.2048')->with(['top_10'=> $top_10, 'top'=> $top]);
+        if (Auth::user()->stamina !== 0) {
+            $all = Game1_Attemption::all();
+            $top = Game1_Attemption::orderBy('scores', 'desc')->first();
+            $top_10 = Game1_Attemption::all()->sortByDesc('scores')->groupBy('participant_name')->take(10);
+            if ($all->isEmpty()) {
+                return view('participant.games-quizzes.games.2048')/*->with(['top_10'=> $top_10])*/;
+            }
+            else {
+                return view('participant.games-quizzes.games.2048')->with(['top_10'=> $top_10, 'top'=> $top]);
+            }
+        } else {
+            return redirect()->route('l_participant.gamesQuizzes')->with('errorMsg','You cannot play games when your Medals is 0.');
         }
     }
 
@@ -515,9 +519,19 @@ class LoggedInParticipantController extends Controller
     public function playFlappyBird()
     {
         //
-        //$all = Game2_Attemption::all();
-        $top_10 = Game2_Attemption::all()->sortByDesc('scores')->groupBy('participant_name')->take(10);
-        return view('participant.games-quizzes.games.flappyBird')->with('top_10', $top_10);
+        if (Auth::user()->stamina !== 0) {
+            $all = Game2_Attemption::all();
+            $top_10 = Game2_Attemption::all()->sortByDesc('scores')->groupBy('participant_name')->take(10);
+            if ($all->isEmpty()) {
+                return view('participant.games-quizzes.games.flappyBird')/*->with(['top_10'=> $top_10])*/;
+            }
+            else {
+                return view('participant.games-quizzes.games.flappyBird')->with(['top_10'=> $top_10]);
+            }
+        } else {
+            return redirect()->route('l_participant.gamesQuizzes')->with('errorMsg','You cannot play games when your Medals is 0.');
+        }
+
     }
 
     /**
