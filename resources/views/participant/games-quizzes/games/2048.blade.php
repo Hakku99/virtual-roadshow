@@ -126,11 +126,15 @@
             </button>
         </div>
         <div class="row">
-            <button style="float: right; margin-top: 20px; padding: 3px 12px; border-radius: 3px; background: #bbada0;
+        
+            @isset($top_10)
+                <button style="float: right; margin-top: 20px; padding: 3px 12px; border-radius: 3px; background: #bbada0;
         color: #EEE4DA; text-transform: uppercase; font-weight: bold; font-size: 18px; border-width: 0"
                     onclick="show_ranking()">
-                <i class="fas fa-crown faa-shake animated"></i> Show TOP-10 ranking
-            </button>
+                    <i class="fas fa-crown faa-shake animated"></i> Show TOP-10 ranking
+                </button>
+            @endisset
+        
         </div>
         <div class="row col-12">
         </div>
