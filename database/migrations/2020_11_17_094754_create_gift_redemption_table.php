@@ -20,7 +20,7 @@ class CreateGiftRedemptionTable extends Migration
             $table->boolean('delivered');
 			$table->boolean('cancelled');
 			$table->boolean('delivering');
-			$table->text('f_reason');
+			$table->text('f_reason')->nullable();
             $table->integer('created_by');
             $table->timestamps();
         });
