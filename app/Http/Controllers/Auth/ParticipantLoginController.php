@@ -38,17 +38,6 @@ class ParticipantLoginController extends Controller
         if (Auth::guard('participant')->attempt(['email' => $request->email, 'password' => $request->password],
             $request->remember)) {
 
-
-            if ($request->url === "http://localhost/participant/campaign") {
-                return redirect(route("l_participant.campaign"));
-            } elseif ($request->url === "http://localhost/participant/gamesQuizzes") {
-                return redirect(route("l_participant.gamesQuizzes"));
-            } elseif ($request->url === "http://localhost/participant/gift") {
-                return redirect(route("l_participant.gift"));
-            } elseif ($request->url === "http://localhost/participant/viewCampaign/{id}") {
-                return redirect(route("l_participant.viewCampaign"));
-            }
-
             return redirect()->intended(route('l_participant.home'));
             //return redirect(session('link'));
         }
