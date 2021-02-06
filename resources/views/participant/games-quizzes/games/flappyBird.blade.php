@@ -56,11 +56,13 @@
         </button>
     </div>
     <div class="row" style="width: 320px; margin: 20px auto 0 auto; ">
-        <button style="padding: 6px 12px; border-radius: 3px; background: #9E7D6D;
-        color: #EEE4DA; text-transform: uppercase; font-weight: bold; font-size: 18px; border-width: 0"
-                onclick="show_ranking()">
-            <i class="fas fa-crown faa-shake animated"></i> Show TOP-10 ranking
-        </button>
+        @isset($top_10)
+           <button style="padding: 6px 12px; border-radius: 3px; background: #9E7D6D;
+            color: #EEE4DA; text-transform: uppercase; font-weight: bold; font-size: 18px; border-width: 0"
+                    onclick="show_ranking()">
+                <i class="fas fa-crown faa-shake animated"></i> Show TOP-10 ranking
+            </button> 
+        @endisset
     </div>
     <br>
     {{--<br>--}}
@@ -351,35 +353,37 @@
             });
         }
     }
-
-    function show_ranking() {
-        Swal.fire({
-                title: 'Flappy Bird Top-10 Ranking',
-                html: '<table class="table table-striped table-hover table-bordered table-responsive-sm" width="100%" >' +
-                    '<thead><tr> ' +
-                    '<th scope="col">No.</th>' +
-                    '<th scope="col">Name</th>' +
-                    '<th scope="col">Points</th>' +
-                    '</tr></thead><tbody>' +
-                    '<?php $count = 1; ?>' +
-                    '@foreach($top_10 as $tops)' +
-                    '<td align="center">{{ $count++ }}</td>' +
-                    '<td align="center">{{ $tops[0]->participant_name }}</td>' +
-                    '<td align="center">{{ $tops[0]->scores }}</td>' +
-                    '</tr>' +
-                    '@endforeach' +
-                    '</tbody></table>',
-                width: 600,
-                background: '#fff url("/assets/games_and_quizzes/quizzes/sweetalert_background2.jpg") width: 100%;',
-                showCloseButton: true,
-                allowOutsideClick: true,
-                showCancelButton: true,
-                showConfirmButton: false,
-                /*confirmButtonColor: '#3085d6',
-                confirmButtonText: 'I am ready!',*/
-                cancelButtonText: 'Close',
-                backdrop: 'rgba(224,196,206,0.5) url("/assets/games_and_quizzes/quizzes/sweetalert_background.gif") left',
-            }
-        )
-    }
+    
+    @isset($top_10)
+        function show_ranking() {
+            Swal.fire({
+                    title: 'Flappy Bird Top-10 Ranking',
+                    html: '<table class="table table-striped table-hover table-bordered table-responsive-sm" width="100%" >' +
+                        '<thead><tr> ' +
+                        '<th scope="col">No.</th>' +
+                        '<th scope="col">Name</th>' +
+                        '<th scope="col">Points</th>' +
+                        '</tr></thead><tbody>' +
+                        '<?php $count = 1; ?>' +
+                        '@foreach($top_10 as $tops)' +
+                        '<td align="center">{{ $count++ }}</td>' +
+                        '<td align="center">{{ $tops[0]->participant_name }}</td>' +
+                        '<td align="center">{{ $tops[0]->scores }}</td>' +
+                        '</tr>' +
+                        '@endforeach' +
+                        '</tbody></table>',
+                    width: 600,
+                    background: '#fff url("/assets/games_and_quizzes/quizzes/sweetalert_background2.jpg") width: 100%;',
+                    showCloseButton: true,
+                    allowOutsideClick: true,
+                    showCancelButton: true,
+                    showConfirmButton: false,
+                    /*confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'I am ready!',*/
+                    cancelButtonText: 'Close',
+                    backdrop: 'rgba(224,196,206,0.5) url("/assets/games_and_quizzes/quizzes/sweetalert_background.gif") left',
+                }
+            )
+        }
+    @endisset
 </script>
