@@ -104,7 +104,7 @@ class participantController extends Controller
         $latest_10 = Campaign::where([['deleted', 0], ['status', 1], ['end_date', '>=', $today]])
             ->orderBy('created_at', 'desc')->limit(10)->get();
         /*$gifts = Gift::where([['deleted', 0], ['status', 1], ['expired_date', '>=', $today]])->limit(4)->get();*/
-        $gifts = Gift::where([['deleted', 0], ['status', 1], ['expired_date', '>=', $today]])->get()->random(4);
+        $gifts = Gift::where([['deleted', 0], ['status', 1], ['expired_date', '>=', $today]])->take(4)->get();
         return view('participant.campaign.single_campaign')->with(['campaign' => $campaign, 'isFirst' => true,
             'latest_10' => $latest_10, 'video_id' => $video_id, 'days_remaining' => $days_remaining, 'gifts' => $gifts]);
     }
