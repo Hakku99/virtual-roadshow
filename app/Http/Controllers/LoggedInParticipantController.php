@@ -39,7 +39,7 @@ class LoggedInParticipantController extends Controller
         $today = Carbon::today()->toDateString();
         $campaigns = DB::table('campaign')->where([['deleted', 0], ['status', 1], ['end_date', '>=', $today],
             ['start_date', '<=', $today]])->take(10)->get()->sortBy('name');
-        $banners = Campaign::where([['deleted', 0], ['status', 1], ['banner', 1], ['end_date', '>=', $today],
+        $banners = Campaign::where([['deleted', 0], ['status', 1], ['end_date', '>=', $today],
             ['start_date', '<=', $today]])->get();
         return view('participant.home')
             ->with(['campaigns' => $campaigns, 'banners' => $banners, 'isFirst' => true]);
