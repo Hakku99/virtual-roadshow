@@ -134,7 +134,7 @@
                     <i class="fas fa-crown faa-shake animated"></i> Show TOP-10 ranking
                 </button>
             @endisset
-        
+            
         </div>
         <div class="row col-12">
         </div>
@@ -606,8 +606,9 @@
             this.actuate();
         }
     };
-
-    function show_ranking() {
+    
+    @isset($top_10)
+        function show_ranking() {
         Swal.fire({
                 title: '2048 Top-10 Ranking',
                 html: '<table class="table table-striped table-hover table-bordered table-responsive-sm" >' +
@@ -637,4 +638,5 @@
             }
         )
     }
+    @endisset
 </script>
