@@ -339,6 +339,8 @@
                                 Swal.fire({
                                     type: 'success',
                                     icon: 'success',
+                                    background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+                                    backdrop: 'rgba(224,196,206,0.5)',
                                     title: 'Congrats, you have successfully create a redemption for the gift!',
                                     text: 'You may check your gift redemption status in "My Gifts" section!',
                                     showConfirmButton: true,
@@ -350,6 +352,8 @@
                                 Swal.fire({
                                     type: 'error',
                                     icon: 'error',
+                                    background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+                                    backdrop: 'rgba(224,196,206,0.5)',
                                     title: 'Unfortunately, the gift was unavailable in current moment.',
                                     text: 'Maybe you will be interested in other gifts?',
                                     showConfirmButton: true,
@@ -361,6 +365,8 @@
                                 Swal.fire({
                                     type: 'error',
                                     icon: 'error',
+                                    background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+                                    backdrop: 'rgba(224,196,206,0.5)',
                                     title: 'Unfortunately, the gift has been out of stock in just one moment.',
                                     text: 'Maybe you will be interested in other gifts?',
                                     showConfirmButton: true,
