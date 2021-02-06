@@ -182,6 +182,7 @@ class LoggedInParticipantController extends Controller
                 'created_by' => Auth::user()->id,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'f_reason' => null,
             ]);
 
             return response()->json(['success' => 1, 'data' => $gift_id]);
