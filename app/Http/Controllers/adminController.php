@@ -526,8 +526,23 @@ class adminController extends Controller
      */
     public function renderGiftsTable()
     {
-        $deleted = DB::table('gift')->where('deleted', 0)->get()->sortBy('name');
+        $today = Carbon::today()->toDateString();
+        $deleted = DB::table('gift')->where([['deleted', 0], ['expired_date' , '>', $today]])->get()->sortBy('name');
         $html = view('admin.gift.render.giftTable')->with('gifts', $deleted)->render();
+        return response()->json(['success' => true, 'html' => $html]);
+    }
+
+    /**
+     * render expired gift Datatable.
+     *
+     * @return Renderable
+     * @throws Throwable
+     */
+    public function renderExpiredGiftsTable()
+    {
+        $today = Carbon::today()->toDateString();
+        $deleted = DB::table('gift')->where([['deleted', 0], ['expired_date' , '<=', $today]])->get()->sortBy('name');
+        $html = view('admin.gift.render.expiredGiftTable')->with('gifts', $deleted)->render();
         return response()->json(['success' => true, 'html' => $html]);
     }
 

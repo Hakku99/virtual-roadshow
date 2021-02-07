@@ -41,7 +41,7 @@ Route::get('/', function () {
 });
 
 Route::get('/check', function () {
-    
+
 
 });
 
@@ -79,6 +79,7 @@ Route::post('/admin/inactivateGift', 'adminController@inactivateGift')->name('ad
 Route::post('/admin/activateGift', 'adminController@activateGift')->name('admin.activateGift');
 Route::post('/admin/deleteGift', 'adminController@deleteGift')->name('admin.deleteGift');
 Route::post('/admin/renderGiftsTable', 'adminController@renderGiftsTable')->name('admin.render.giftTable');
+Route::post('/admin/renderExpiredGiftsTable', 'adminController@renderExpiredGiftsTable')->name('admin.render.expiredGiftTable');
 
 /*Route for storing/updating campaign with image uploading*/
 Route::get('/uploadfile', 'UploadfileController@index');

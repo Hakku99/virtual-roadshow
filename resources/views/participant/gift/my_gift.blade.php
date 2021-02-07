@@ -445,6 +445,8 @@
                                     icon: 'success',
                                     title: 'Redemption has been cancelled successfully',
                                     text: 'The points have been refunded to your account.',
+                                    background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+                                    backdrop: 'rgba(224,196,206,0.5)',
                                     showConfirmButton: true,
                                     /*timer: 1500*/
                                 });
@@ -504,6 +506,8 @@
                                     icon: 'success',
                                     title: 'Redemption has been mark as "Delivered" successfully!',
                                     text: 'Hope you enjoy with the gift XD',
+                                    background: '#fff url("/assets/background_image/gift_alert1.jpg") center',
+                                    backdrop: 'rgba(224,196,206,0.5)',
                                     showConfirmButton: true,
                                     /*timer: 1500*/
                                 });

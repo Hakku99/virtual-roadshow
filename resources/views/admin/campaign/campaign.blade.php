@@ -36,7 +36,7 @@
 <section class="blog-posts grid-system col-12">
     <div class="container col-12">
         <div class="all-blog-posts">
-            <div class="col-lg-12" {{--style="margin-bottom: 50px"--}}>
+            <div class="col-lg-12">
                 <div class="sidebar-item submit-comment">
                     <div class="row" style="width: 93%;">
                         <div class="col-md-12" style="margin-bottom: 5%">

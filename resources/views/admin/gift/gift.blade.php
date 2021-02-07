@@ -1,6 +1,6 @@
 @include('template.admin')
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <style>
@@ -60,41 +60,63 @@
 <!-- Banner Ends Here -->
 
 <body class="antialiased">
-<div
-    class="relative {{--flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0--}}">
-    {{--<audio id="my_audio" src="resources/elements/bgm.mp3" loop="loop"></audio>--}}
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-        {{--<h1 style="text-align:center; margin-top: 110px;margin-bottom: 70px; /*color: white*/">Welcome, Dear Admin.</h1>
-        <p style="text-align:center; margin-bottom: 70px; --}}{{--color: white--}}{{--">What can I help you?</p>--}}
-        {{--<div class="box">--}}
-        <section class="blog-posts grid-system">
-            <div class="all-blog-posts">
-                <div class="col-lg-12" {{--style="margin-bottom: 50px"--}}>
-                    <div class="sidebar-item submit-comment">
-                        <div class="row" style="width: 93%;">
-                            <div class="col-md-12" style="margin-bottom: 5%">
-                                <a href="{{url('/admin/addGift')}}" class="float-right">
-                                    <button type="button" class="btn btn-success btn-md"><i
-                                            {{--class="fas fa-plus"--}}></i> Add Gift
-                                    </button>
-                                </a>
-                            </div>
-                            <!-- /.col -->
+<section class="blog-posts grid-system col-12">
+    <div class="container col-12">
+        <div class="all-blog-posts">
+            <div class="col-lg-12">
+                <div class="sidebar-item submit-comment">
+                    <div class="row" style="width: 93%;">
+                        <div class="col-md-12" style="margin-bottom: 5%">
+                            <a href="{{url('/admin/addGift')}}" class="float-right">
+                                <button type="button" class="btn btn-success btn-md"><i
+                                        {{--class="fas fa-plus"--}}></i> Add Gift
+                                </button>
+                            </a>
                         </div>
-                        <!-- /.row -->
-                        {{--<h2>List of campaigns</h2>--}}
-                        <div class="container col-md-10" {{--style="overflow-x:auto;"--}} id="gift_table">
-                            <!-- /.table -->
-
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    {{--<h2>List of campaigns</h2>--}}
+                    <div class="row">
+                        <ul class="nav nav-tabs md-tabs col-12" id="myTabMD" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#activeGift"
+                                   role="tab" aria-selected="true">Active Gifts (Not Expired)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#expiredGift"
+                                   role="tab" aria-selected="false">Expired Gifts</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content col-12">
+                            <div id="activeGift" class="tab-pane active row">
+                                <div class="sidebar-item submit-comment">
+                                    <div class="container col-md-11" id="gift_table" style="overflow-x: auto">
+                                        <!--table-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="expiredGift" class="tab-pane row">
+                                <div class="sidebar-item submit-comment">
+                                    <div class="container col-md-11" id="expiredGift_table"
+                                         style="overflow-x: auto">
+                                        <!--table-->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    {{--<div class="container col-md-10" --}}{{--style="overflow-x:auto;"--}}{{-- id="gift_table">
+                        <!-- /.table -->
+
+                    </div>--}}
                 </div>
             </div>
-        </section>
-        {{--</div>--}}
-        {{--<button class="button button2">?</button>--}}
+        </div>
     </div>
-</div>
+</section>
+
 <section class="call-to-action">
     <div class="container">
         <div class="row">
@@ -191,18 +213,55 @@
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "searching": true,
                     "columnDefs": [
-                        {"searchable": false, "targets": [0, 2, 6, 7, 8 ,9]}
+                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]}
                     ],
                     "ordering": true,
                     "info": true,
                     "scrollX": true,
                     "autoWidth": true,
                 });
-                setTimeout(
-                    function () {
-                        $('#gifts_table').DataTable().columns.adjust();
-                    },
-                    500);
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    $($.fn.dataTable.tables(true)).DataTable()
+                        .columns.adjust();
+                });
+            }
+        });
+
+        $.ajax({
+            url: "{{ route('admin.render.expiredGiftTable') }}",
+            method: "POST",
+            /*data: {
+                data: '<?php //echo json_encode($measurements); ?>'
+                },*/
+            dataType: "json",
+            beforeSend: function () {
+                $('#overlay').removeClass('d-none');
+                $('#expiredGift_table').html('<div class="overlay margin-bottom-100px margin-top-100px">\n' +
+                    '                                        <i class="fas fa-5x fa-spinner fa-spin"></i>\n' +
+                    '                                    </div>');
+            },
+            complete: function (data) {
+                $('#overlay').addClass('d-none');
+            },
+            success: function (data) {
+                $('#expiredGift_table').html(data.html);
+
+                $('#expiredGifts_table').DataTable({
+                    "paging": true,
+                    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    "searching": true,
+                    "columnDefs": [
+                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]}
+                    ],
+                    "ordering": true,
+                    "info": true,
+                    "scrollX": true,
+                    "autoWidth": true,
+                });
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    $($.fn.dataTable.tables(true)).DataTable()
+                        .columns.adjust();
+                });
             }
         });
     }
