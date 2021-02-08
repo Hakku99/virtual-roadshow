@@ -17,7 +17,7 @@ class quizTableSeeder extends Seeder
         //
         $today = Carbon::today()->toDateString();
         DB::table('quiz')->insert([
-            'name' => Rear0pDrfn,
+            'name' => "Rear0pDrfn",
             'start_date' => $today,
             'end_date' => $today,
             'question1' => "This is a dummy question.",
