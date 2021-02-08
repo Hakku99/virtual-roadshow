@@ -448,6 +448,7 @@ class ComposerStaticInit74f401bc876a73cd09cb3f3080cd59bd
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Campaign' => __DIR__ . '/../..' . '/app/Models/Campaign.php',
         'App\\Models\\Game1_Attemption' => __DIR__ . '/../..' . '/app/Models/Game1_Attemption.php',
+        'App\\Models\\Game2_Attemption' => __DIR__ . '/../..' . '/app/Models/Game2_Attemption.php',
         'App\\Models\\Gift' => __DIR__ . '/../..' . '/app/Models/Gift.php',
         'App\\Models\\Gift_Redemption' => __DIR__ . '/../..' . '/app/Models/Gift_Redemption.php',
         'App\\Models\\Quiz' => __DIR__ . '/../..' . '/app/Models/Quiz.php',
@@ -4289,6 +4290,7 @@ class ComposerStaticInit74f401bc876a73cd09cb3f3080cd59bd
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
+        'quizTableSeeder' => __DIR__ . '/../..' . '/database/seeds/quizTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

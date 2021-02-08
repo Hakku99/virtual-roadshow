@@ -34,6 +34,7 @@ return array(
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\Campaign' => $baseDir . '/app/Models/Campaign.php',
     'App\\Models\\Game1_Attemption' => $baseDir . '/app/Models/Game1_Attemption.php',
+    'App\\Models\\Game2_Attemption' => $baseDir . '/app/Models/Game2_Attemption.php',
     'App\\Models\\Gift' => $baseDir . '/app/Models/Gift.php',
     'App\\Models\\Gift_Redemption' => $baseDir . '/app/Models/Gift_Redemption.php',
     'App\\Models\\Quiz' => $baseDir . '/app/Models/Quiz.php',
@@ -3875,4 +3876,5 @@ return array(
     'phpDocumentor\\Reflection\\Types\\This' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/This.php',
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
     'phpDocumentor\\Reflection\\Utils' => $vendorDir . '/phpdocumentor/reflection-docblock/src/Utils.php',
+    'quizTableSeeder' => $baseDir . '/database/seeds/quizTableSeeder.php',
 );

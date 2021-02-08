@@ -358,7 +358,7 @@ class LoggedInParticipantController extends Controller
     {
         //
         $today = Carbon::today()->toDateString();
-        $quizzes = Quiz::where([['deleted', 0], ['status', 1], ['end_date', '>=', $today],
+        $quizzes = Quiz::where([['deleted', 0], ['status', 1], ['end_date', '>=', $today], ['random', 0],
             ['start_date', '<=', $today]])->get()->sortBy('name');
         $quizzes_attemption = Quiz_Attemption::where([['attempt_date', $today], ['participant_id', Auth::user()->id]])->get();
         foreach ($quizzes as $quiz) {
@@ -385,7 +385,11 @@ class LoggedInParticipantController extends Controller
             return redirect()->route('l_participant.gamesQuizzes')->with('QuizErrorMsg','You cannot play games when your Medals is 0.');
         } else {
             $quiz = Quiz::find($id);
-            $random = \App\Models\Quiz::where([['id', '!=' ,$id]])->inRandomOrder()->first();
+            if (Quiz::where('random', 0)->count() <= 1) {
+                $random = \App\Models\Quiz::where([['id', '!=' ,$id], ['random', 1]])->inRandomOrder()->first();
+            } else{
+                $random = \App\Models\Quiz::where([['id', '!=' ,$id], ['random', 0]])->inRandomOrder()->first();
+            }
 
             $campaign = Campaign::find($quiz->campaign_id);
             $pattern =

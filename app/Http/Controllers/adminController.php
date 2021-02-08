@@ -357,6 +357,7 @@ class adminController extends Controller
             'campaign_id' => $id,
             'created_by' => Auth::user()->id,
             'deleted' => 0,
+            'random' => false,
             'status' => 1,
         ]);
 
