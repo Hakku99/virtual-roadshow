@@ -43,6 +43,7 @@ class quizTableSeeder extends Seeder
             'campaign_id' => null,
             'deleted' => 0,
             'status' => 1,
+            'random' => 1,
             'created_by' => 0,
             'created_at' => now(),
             'updated_at' => now(),
