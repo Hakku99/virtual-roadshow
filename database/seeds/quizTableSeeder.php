@@ -3,8 +3,6 @@
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
-use Faker\Provider\en_US\Text;
 use Illuminate\Database\Eloquent\Model;
 
 class quizTableSeeder extends Seeder
@@ -18,9 +16,8 @@ class quizTableSeeder extends Seeder
     {
         //
         $today = Carbon::today()->toDateString();
-        $faker = Faker::create();
         DB::table('quiz')->insert([
-            'name' => str_random(10),
+            'name' => Rear0pDrfn,
             'start_date' => $today,
             'end_date' => $today,
             'question1' => "This is a dummy question.",
@@ -34,13 +31,13 @@ class quizTableSeeder extends Seeder
             'question9' => "This is a dummy question.",
             'question10' => "This is a dummy question.",
             'answer_for_question1' => 'January 1986',
-            'answer_for_question2' => $faker->name,
+            'answer_for_question2' => "January 1986",
             'answer_for_question3' => 'Kuala Lumpur, Malaysia',
             'answer_for_question4' => 'Virtual Roadshow.',
-            'answer_for_question5' => str_random(10).'@gmail.com',
-            'answer_for_question6' => $faker->text,
-            'answer_for_question7' => $faker->jobTitle,
-            'answer_for_question8' => $faker->sentence,
+            'answer_for_question5' => 'VirtualRoadshow@gmail.com',
+            'answer_for_question6' => 'Bunny',
+            'answer_for_question7' => "Exhibit Designer",
+            'answer_for_question8' => "He is a pro-gamers who runs a YouTube channel on YouTube.",
             'answer_for_question9' => "None of above",
             'answer_for_question10' => "All of above",
             'campaign_id' => null,
