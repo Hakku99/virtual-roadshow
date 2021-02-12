@@ -45,6 +45,13 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-6">
+                                    <input type="checkbox" onclick="showPassword()"> Show Password
+                                </div>
+                            </div>
+
                             <input type="hidden" id="url" name="url" value="{{$url}}">
 
                             {{--<div class="form-group row">

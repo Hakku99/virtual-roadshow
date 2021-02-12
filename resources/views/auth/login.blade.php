@@ -41,6 +41,12 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-6">
+                                <input type="checkbox" onclick="showPassword()"> Show Password
+                            </div>
+                        </div>
                         {{--<div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

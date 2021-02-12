@@ -79,3 +79,26 @@
 </div>
 </body>
 </html>
+
+<script>
+    function showPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    function show_Both_Password() {
+        var x = document.getElementById("password");
+        var y = document.getElementById("password-confirm");
+        if (x.type === "password" && y.type === "password") {
+            x.type = "text";
+            y.type = "text";
+        } else {
+            x.type = "password";
+            y.type = "password";
+        }
+    }
+</script>
