@@ -1,5 +1,26 @@
 @include('layouts.my_app')
 <style>
+    @keyframes fade-in-up {
+         0% {
+             opacity: 0;
+        }
+         100% {
+             transform: translateY(0);
+             opacity: 1;
+        }
+    }
+    
+    .video.stuck {
+         position: fixed;
+         bottom: 20px;
+         right: 20px;
+         width: 260px;
+         height: 145px;
+         transform: translateY(100%);
+         animation: fade-in-up 0.75s ease forwards;
+        z-index: 1;
+    }
+
     p {
         font-size: 22px;
         text-align: center;
@@ -117,11 +138,16 @@
                     allowfullscreen
                     style="margin: auto; border:none; width: 100%; height: 480px">
             </iframe>--}}
-            <iframe {{--width="854" height="480"--}} src="https://www.youtube.com/embed/{{$video_id}}?autoplay=1"
-                    allowfullscreen
-                    style="margin: auto; border:none; width: 100%; height: 480px">
-            </iframe>
-
+            
+            <div class="video-wrap">
+                <div class="video">
+                    <iframe {{--width="854" height="480"--}} src="https://www.youtube.com/embed/{{$video_id}}?autoplay=1"
+                            allowfullscreen
+                            style="margin: auto; border:none; width: 100%; height: 480px">
+                    </iframe>
+                </div>
+            </div>
+            
             <div class="paragraph_background">
                 <p class="drop_caps"> {{$campaign->section1}} </p>
                 <p style="margin-top: 30px"> {{$campaign->section2}} </p>
@@ -357,4 +383,24 @@
 
         $('#SpeechBubble').show();
     }
+    
+    (function($) {
+        var $window = $(window);
+        var $videoWrap = $('.video-wrap');
+        var $video = $('.video');
+        var videoHeight = $video.outerHeight();
+
+        $window.on('scroll',  function() {
+            var windowScrollTop = $window.scrollTop();
+            var videoBottom = videoHeight + $videoWrap.offset().top;
+
+            if (windowScrollTop > videoBottom) {
+                $videoWrap.height(videoHeight);
+                $video.addClass('stuck');
+            } else {
+                $videoWrap.height('auto');
+                $video.removeClass('stuck');
+            }
+        });
+    }(jQuery));
 </script>
