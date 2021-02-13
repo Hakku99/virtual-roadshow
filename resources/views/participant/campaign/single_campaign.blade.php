@@ -10,15 +10,20 @@
         }
     }
     
+    .video iframe {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
     .video.stuck {
          position: fixed;
-         bottom: 250px;
-         right: 20px;
+         bottom: 120px;
+         right: 30px;
          width: 260px;
-         height: auto;
+         height: 146px;
          transform: translateY(100%);
          animation: fade-in-up 0.75s ease forwards;
-        z-index: 99;
+         z-index: 99;
     }
 
     p {
