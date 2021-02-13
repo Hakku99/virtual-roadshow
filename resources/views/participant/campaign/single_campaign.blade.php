@@ -15,7 +15,7 @@
          bottom: 250px;
          right: 20px;
          width: 260px;
-         height: 145px;
+         height: auto;
          transform: translateY(100%);
          animation: fade-in-up 0.75s ease forwards;
         z-index: 99;
