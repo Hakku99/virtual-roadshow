@@ -12,13 +12,13 @@
     
     .video.stuck {
          position: fixed;
-         bottom: 20px;
+         bottom: 250px;
          right: 20px;
          width: 260px;
          height: 145px;
          transform: translateY(100%);
          animation: fade-in-up 0.75s ease forwards;
-        z-index: 1;
+        z-index: 99;
     }
 
     p {
