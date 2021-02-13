@@ -101,6 +101,17 @@
             font-family: Candara;
             font-size: medium;
         }
+        
+        .video.stuck {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 200px;
+            height: 113px;
+            transform: translateY(100%);
+            animation: fade-in-up 0.75s ease forwards;
+            z-index: 99;
+        }
     }
 </style>
 
