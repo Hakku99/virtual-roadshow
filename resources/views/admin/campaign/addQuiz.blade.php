@@ -1,6 +1,6 @@
 @include('template.admin')
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <style>
@@ -64,7 +64,8 @@
                 <div class="col-lg-12">
                     <div class="text-content">
                         <h4>Welcome, Dear {{$name}}</h4>
-                        <h2>You are now adding a quiz for campaign <span style="color: #F48840; font-size: 55px">{{$campaign->name}}</span></h2>
+                        <h2>You are now adding a quiz for campaign <span
+                                style="color: #F48840; font-size: 55px">{{$campaign->name}}</span></h2>
                     </div>
                 </div>
             </div>
@@ -108,7 +109,8 @@
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 1</label>
-                                                <textarea id="answer_for_question1" name="answer_for_question1" rows="3" required=""
+                                                <textarea id="answer_for_question1" name="answer_for_question1" rows="3"
+                                                          required=""
                                                           placeholder="ANSWER FOR QUESTION 1"></textarea>
                                             </fieldset>
                                         </div>
@@ -123,7 +125,8 @@
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 2</label>
-                                                <textarea id="answer_for_question2" name="answer_for_question2" rows="3" required=""
+                                                <textarea id="answer_for_question2" name="answer_for_question2" rows="3"
+                                                          required=""
                                                           placeholder="ANSWER FOR QUESTION 2"></textarea>
                                             </fieldset>
                                         </div>
@@ -138,7 +141,8 @@
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 3</label>
-                                                <textarea id="answer_for_question3" name="answer_for_question3" rows="3" required=""
+                                                <textarea id="answer_for_question3" name="answer_for_question3" rows="3"
+                                                          required=""
                                                           placeholder="ANSWER FOR QUESTION 3"></textarea>
                                             </fieldset>
                                         </div>
@@ -153,7 +157,8 @@
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 4</label>
-                                                <textarea id="answer_for_question4" name="answer_for_question4" rows="3" required=""
+                                                <textarea id="answer_for_question4" name="answer_for_question4" rows="3"
+                                                          required=""
                                                           placeholder="ANSWER FOR QUESTION 4"></textarea>
                                             </fieldset>
                                         </div>
@@ -168,80 +173,91 @@
                                         <div class="col-md-6 col-sm-12">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 5</label>
-                                                <textarea id="answer_for_question5" name="answer_for_question5" rows="3" required=""
+                                                <textarea id="answer_for_question5" name="answer_for_question5" rows="3"
+                                                          required=""
                                                           placeholder="ANSWER FOR QUESTION 5"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-12" id="more_field">
+                                            <label for="more_fields">Do you have more questions?</label>
+                                            <select name="more_fields" id="more_fields" onchange="moreFields()">
+                                                <option value="1">Yes</option>
+                                                <option value="0" selected="selected">No</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12" id="q6" style="display:none">
                                             <fieldset>
                                                 <label>QUESTION 6</label>
                                                 <textarea id="question6" name="question6" rows="3"
                                                           placeholder="QUESTION 6 (OPTIONAL)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q6a" style="display:none">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 6</label>
                                                 <textarea id="answer_for_question6" name="answer_for_question6" rows="3"
                                                           placeholder="ANSWER FOR QUESTION 6 (REQUIRED IF QUESTION EXISTS)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q7" style="display:none">
                                             <fieldset>
                                                 <label>QUESTION 7</label>
                                                 <textarea id="question7" name="question7" rows="3"
                                                           placeholder="QUESTION 7 (OPTIONAL)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q7a" style="display:none">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 7</label>
                                                 <textarea id="answer_for_question7" name="answer_for_question7" rows="3"
                                                           placeholder="ANSWER FOR QUESTION 7 (REQUIRED IF QUESTION EXISTS)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q8" style="display:none">
                                             <fieldset>
                                                 <label>QUESTION 8</label>
                                                 <textarea id="question8" name="question8" rows="3"
                                                           placeholder="QUESTION 8 (OPTIONAL)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q8a" style="display:none">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 8</label>
                                                 <textarea id="answer_for_question8" name="answer_for_question8" rows="3"
                                                           placeholder="ANSWER FOR QUESTION 8 (REQUIRED IF QUESTION EXISTS)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q9" style="display:none">
                                             <fieldset>
                                                 <label>QUESTION 9</label>
                                                 <textarea id="question9" name="question9" rows="3"
                                                           placeholder="QUESTION 9 (OPTIONAL)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q9a" style="display:none">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 9</label>
                                                 <textarea id="answer_for_question9" name="answer_for_question9" rows="3"
                                                           placeholder="ANSWER FOR QUESTION 9 (REQUIRED IF QUESTION EXISTS)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q10" style="display:none">
                                             <fieldset>
                                                 <label>QUESTION 10</label>
                                                 <textarea id="question10" name="question10" rows="3"
                                                           placeholder="QUESTION 10 (OPTIONAL)"></textarea>
                                             </fieldset>
                                         </div>
-                                        <div class="col-md-6 col-sm-12">
+                                        <div class="col-md-6 col-sm-12" id="q10a" style="display:none">
                                             <fieldset>
                                                 <label>ANSWER FOR QUESTION 10</label>
-                                                <textarea id="answer_for_question10" name="answer_for_question10" rows="3"
+                                                <textarea id="answer_for_question10" name="answer_for_question10"
+                                                          rows="3"
                                                           placeholder="ANSWER FOR QUESTION 10 (REQUIRED IF QUESTION EXISTS)"></textarea>
                                             </fieldset>
                                         </div>
+
 
                                         <div class="col-lg-12">
                                             <fieldset>
@@ -310,4 +326,108 @@
 </footer>
 </body>
 </html>
+
+<script>
+
+    function moreFields() {
+        var x = $('#more_fields').val();
+        console.log(x);
+        if (x === 0) {
+            document.getElementById('if_yes').style.display = 'none';
+            document.getElementById('q6').style.display = 'none';
+            document.getElementById('q7').style.display = 'none';
+            document.getElementById('q8').style.display = 'none';
+            document.getElementById('q9').style.display = 'none';
+            document.getElementById('q10').style.display = 'none';
+            document.getElementById('q6a').style.display = 'none';
+            document.getElementById('q7a').style.display = 'none';
+            document.getElementById('q8a').style.display = 'none';
+            document.getElementById('q9a').style.display = 'none';
+            document.getElementById('q10a').style.display = 'none';
+        } else {
+            document.getElementById('q6').style.display = 'block';
+            document.getElementById('q7').style.display = 'block';
+            document.getElementById('q8').style.display = 'block';
+            document.getElementById('q9').style.display = 'block';
+            document.getElementById('q10').style.display = 'block';
+            document.getElementById('q6a').style.display = 'block';
+            document.getElementById('q7a').style.display = 'block';
+            document.getElementById('q8a').style.display = 'block';
+            document.getElementById('q9a').style.display = 'block';
+            document.getElementById('q10a').style.display = 'block';
+            document.getElementById('more_field').style.display = 'none';
+        }
+    }
+
+    $('#question6').change(function () {
+        if ($('#question6').val() !== "") {
+            $("#answer_for_question6").attr('required', '');
+        } else {
+            $("#answer_for_question6").removeAttr('required', '');
+        }
+    });
+    $('#question7').change(function () {
+        if ($('#question7').val() !== "") {
+            $("#answer_for_question7").attr('required', '');
+        } else {
+            $("#answer_for_question7").removeAttr('required', '');
+        }
+    });
+    $('#question8').change(function () {
+        if ($('#question8').val() !== "") {
+            $("#answer_for_question8").attr('required', '');
+        } else {
+            $("#answer_for_question8").removeAttr('required', '');
+        }
+    });
+    $('#question9').change(function () {
+        if ($('#question9').val() !== "") {
+            $("#answer_for_question9").attr('required', '');
+        } else {
+            $("#answer_for_question9").removeAttr('required', '');
+        }
+    });
+    $('#question10').change(function () {
+        if ($('#question10').val() !== "") {
+            $("#answer_for_question10").attr('required', '');
+        } else {
+            $("#answer_for_question10").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question6').change(function () {
+        if ($('#answer_for_question6').val() !== "") {
+            $("#question6").attr('required', '');
+        } else {
+            $("#question6").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question7').change(function () {
+        if ($('#answer_for_question7').val() !== "") {
+            $("#question7").attr('required', '');
+        } else {
+            $("#question7").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question8').change(function () {
+        if ($('#answer_for_question8').val() !== "") {
+            $("#question8").attr('required', '');
+        } else {
+            $("#question8").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question9').change(function () {
+        if ($('#answer_for_question9').val() !== "") {
+            $("#question9").attr('required', '');
+        } else {
+            $("#question9").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question10').change(function () {
+        if ($('#answer_for_question10').val() !== "") {
+            $("#question10").attr('required', '');
+        } else {
+            $("#question10").removeAttr('required', '');
+        }
+    });
+</script>
 

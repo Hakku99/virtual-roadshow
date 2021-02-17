@@ -322,7 +322,7 @@
         txt.innerHTML = html;
         return txt.value;
     }
-
+    
     $(function () {
         $('#name').val(decodeHtml('{{$campaign->name}}'));
         $('#video_link').val(decodeHtml('{{$campaign->video_link}}'));

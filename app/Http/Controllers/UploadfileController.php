@@ -36,6 +36,9 @@ class UploadfileController extends Controller
             'select_file'  => 'required|image|mimes:jpeg,jpg,png,gif|max:4096000'
         ]);
         $url = json_encode($request->all('video_link'));
+        $section1 = preg_replace( "/\r|\n/", " ", $request->all()['section1'] );
+        $section2 = preg_replace( "/\r|\n/", " ", $request->all()['section2'] );
+        $section3 = preg_replace( "/\r|\n/", " ", $request->all()['section3'] );
         if (strpos($url, 'youtube') > 0) {
             $image = $request->file('select_file');
 
@@ -43,9 +46,9 @@ class UploadfileController extends Controller
 
             $campaign = Campaign::create([
                 'name' => $request->all()['name'],
-                'section1' => $request->all()['section1'],
-                'section2' => $request->all()['section2'],
-                'section3' => $request->all()['section3'],
+                'section1' => $section1,
+                'section2' => $section2,
+                'section3' => $section3,
                 'start_date' => $request->all()['start_date'],
                 'end_date' => $request->all()['end_date'],
                 'contact_number' => $request->all()['contact_number'],
@@ -77,6 +80,9 @@ class UploadfileController extends Controller
             'select_file'  => 'nullable|image|mimes:jpeg,jpg,png,gif|max:4096000'
         ]);
         $url = json_encode($request->all('video_link'));
+        $section1 = preg_replace( "/\r|\n/", " ", $request->all()['section1'] );
+        $section2 = preg_replace( "/\r|\n/", " ", $request->all()['section2'] );
+        $section3 = preg_replace( "/\r|\n/", " ", $request->all()['section3'] );
 
         if (strpos($url, 'youtube') > 0) {
             $campaign = Campaign::where('id', $id)->first();
@@ -97,9 +103,9 @@ class UploadfileController extends Controller
                 $new_name = $image->getClientOriginalName();
                 Campaign::where('id', $id)->update([
                     'name' => $request->all()['name'],
-                    'section1' => $request->all()['section1'],
-                    'section2' => $request->all()['section2'],
-                    'section3' => $request->all()['section3'],
+                    'section1' => $section1,
+                    'section2' => $section2,
+                    'section3' => $section3,
                     'start_date' => $request->all()['start_date'],
                     'end_date' => $request->all()['end_date'],
                     'contact_number' => $request->all()['contact_number'],
@@ -118,9 +124,9 @@ class UploadfileController extends Controller
                         public_path('/assets/uploaded_images/campaign_images/'. $request->all()['name'] . '/' .$old_campaign_image));
                     Campaign::where('id', $id)->update([
                         'name' => $request->all()['name'],
-                        'section1' => $request->all()['section1'],
-                        'section2' => $request->all()['section2'],
-                        'section3' => $request->all()['section3'],
+                        'section1' => $section1,
+                        'section2' => $section2,
+                        'section3' => $section3,
                         'start_date' => $request->all()['start_date'],
                         'end_date' => $request->all()['end_date'],
                         'contact_number' => $request->all()['contact_number'],
@@ -135,9 +141,9 @@ class UploadfileController extends Controller
                     /*If no image uploaded, and do not change campaign name*/
                     Campaign::where('id', $id)->update([
                         'name' => $request->all()['name'],
-                        'section1' => $request->all()['section1'],
-                        'section2' => $request->all()['section2'],
-                        'section3' => $request->all()['section3'],
+                        'section1' => $section1,
+                        'section2' => $section2,
+                        'section3' => $section3,
                         'start_date' => $request->all()['start_date'],
                         'contact_number' => $request->all()['contact_number'],
                         'contact_email' => $request->all()['contact_email'],

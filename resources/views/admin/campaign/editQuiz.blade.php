@@ -349,6 +349,77 @@
         $('#answer_for_question9').val(decodeHtml('{{$quiz->answer_for_question9}}'));
         $('#answer_for_question10').val(decodeHtml('{{$quiz->answer_for_question10}}'));
     });
+
+    $('#question6').change(function(){
+        if ($('#question6').val() !== "") {
+            $("#answer_for_question6").attr('required', '');
+        } else {
+            $("#answer_for_question6").removeAttr('required', '');
+        }
+    });
+    $('#question7').change(function(){
+        if ($('#question7').val() !== "") {
+            $("#answer_for_question7").attr('required', '');
+        } else {
+            $("#answer_for_question7").removeAttr('required', '');
+        }
+    });
+    $('#question8').change(function(){
+        if ($('#question8').val() !== "") {
+            $("#answer_for_question8").attr('required', '');
+        } else {
+            $("#answer_for_question8").removeAttr('required', '');
+        }
+    });
+    $('#question9').change(function(){
+        if ($('#question9').val() !== "") {
+            $("#answer_for_question9").attr('required', '');
+        } else {
+            $("#answer_for_question9").removeAttr('required', '');
+        }
+    });
+    $('#question10').change(function(){
+        if ($('#question10').val() !== "") {
+            $("#answer_for_question10").attr('required', '');
+        } else {
+            $("#answer_for_question10").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question6').change(function(){
+        if ($('#answer_for_question6').val() !== "") {
+            $("#question6").attr('required', '');
+        } else {
+            $("#question6").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question7').change(function(){
+        if ($('#answer_for_question7').val() !== "") {
+            $("#question7").attr('required', '');
+        } else {
+            $("#question7").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question8').change(function(){
+        if ($('#answer_for_question8').val() !== "") {
+            $("#question8").attr('required', '');
+        } else {
+            $("#question8").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question9').change(function(){
+        if ($('#answer_for_question9').val() !== "") {
+            $("#question9").attr('required', '');
+        } else {
+            $("#question9").removeAttr('required', '');
+        }
+    });
+    $('#answer_for_question10').change(function(){
+        if ($('#answer_for_question10').val() !== "") {
+            $("#question10").attr('required', '');
+        } else {
+            $("#question10").removeAttr('required', '');
+        }
+    });
 </script>
 
 
