@@ -14,9 +14,12 @@
             <td>
                 <div class="blog-post">
                     <div class="blog-thumb col-lg-12">
+                        {{--<img class="col-lg-3 col-sm-12"
+                             src="/assets/uploaded_images/gift_images//{{$gift->name}}//{{$gift->image_name}}"
+                             style="width: 100%; height: 120px; object-fit: cover; float: left">--}}
                         <img class="col-lg-3 col-sm-12"
                              src="/assets/uploaded_images/gift_images//{{$gift->name}}//{{$gift->image_name}}"
-                             style="width: 100%; height: 120px; object-fit: cover; float: left">
+                             style="width: 100%; height: 160px; object-fit: cover; float: left">
                         <div class="col-lg-6 col-sm-12" style="float: left; padding: 10px; margin-left: 20px;
                             text-align: justify; text-justify: inter-word;">
                             <h4 style="font-family: Roboto; font-weight: bold">{{$gift->name}}</h4>

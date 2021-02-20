@@ -13,6 +13,14 @@
         border: 1px solid #ddd;
         padding: 8px;
     }
+
+    .truncate {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 </style>
 
 <!-- Banner Starts Here -->
@@ -184,7 +192,14 @@
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "searching": true,
                     "columnDefs": [
-                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]}
+                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]},
+                        {
+                            targets: [4, 5, 6], render: function (data, type, row) {
+                                return data.length > 80 ?
+                                    data.substr(0, 80) + '…' :
+                                    data;
+                            }
+                        }
                     ],
                     "ordering": true,
                     "info": true,

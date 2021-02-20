@@ -7,9 +7,6 @@
         <th scope="col">Name</th>
         <th scope="col">Image</th>
         <th scope="col">Video</th>
-        <th scope="col">Elaboration 1</th>
-        <th scope="col">Elaboration 2</th>
-        <th scope="col">Elaboration 3</th>
         <th scope="col">Contact number</th>
         <th scope="col">Contact email</th>
         <th scope="col">Edit</th>
@@ -32,9 +29,6 @@
                         allowfullscreen
                         style="margin: auto; border: none">
                 </iframe></td>
-            <td>{{ $campaign->section1 }}</td>
-            <td>{{ $campaign->section2 }}</td>
-            <td>{{ $campaign->section3 }}</td>
             <td>{{ $campaign->contact_number }}</td>
             <td>{{ $campaign->contact_email }}</td>
             <td class="text-center">

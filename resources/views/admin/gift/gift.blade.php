@@ -213,7 +213,14 @@
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "searching": true,
                     "columnDefs": [
-                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]}
+                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]},
+                        {
+                            targets: [3], render: function (data, type, row) {
+                                return data.length > 100 ?
+                                    data.substr(0, 100) + '…' :
+                                    data;
+                            }
+                        }
                     ],
                     "ordering": true,
                     "info": true,
@@ -251,7 +258,14 @@
                     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     "searching": true,
                     "columnDefs": [
-                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]}
+                        {"searchable": false, "targets": [0, 2, 6, 7, 8, 9]},
+                        {
+                            targets: [3], render: function (data, type, row) {
+                                return data.length > 100 ?
+                                    data.substr(0, 100) + '…' :
+                                    data;
+                            }
+                        }
                     ],
                     "ordering": true,
                     "info": true,
